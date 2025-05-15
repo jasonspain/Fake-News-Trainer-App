@@ -1,3 +1,4 @@
+import java.util.Scanner;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -16,9 +17,5 @@ public class Question {
         this.img=img;
         this.Question=Question;
         this.fileAns=fileAns;
-    }
-    
-    public void getQuestion(int count){
- 
     }
 }

@@ -1,3 +1,4 @@
+import java.util.Scanner;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -19,10 +20,5 @@ public class MultipleChoice extends Question{
        this.choice2=choice2;
        this.choice3=choice3;
        this.choice4=choice4;
-    }
-   
-    @Override
-    public void getQuestion(int count){
- 
     }
 }
