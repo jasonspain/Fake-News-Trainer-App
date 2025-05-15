@@ -18,7 +18,7 @@ public class Question {
         this.fileAns=fileAns;
     }
     
-    public void getFileAns(){
-       
+    public void getQuestion(int count){
+ 
     }
 }

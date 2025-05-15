@@ -8,13 +8,12 @@
  * @author 342964137
  */
 public class Real_Fake extends Question{
-    
     public Real_Fake(String img,String Question, int fileAns){
         super(img,Question,fileAns);
     }
     
     @Override
-    public void getFileAns(){
-       
+    public void getQuestion(int count){
+ 
     }
 }
