@@ -21,4 +21,9 @@ public class MultipleChoice extends Question{
        this.choice3=choice3;
        this.choice4=choice4;
     }
+    
+    @Override
+    public String toString(){
+      return super.toString()+choice1+choice2+choice3+choice4;
+    }
 }

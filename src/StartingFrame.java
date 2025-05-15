@@ -29,7 +29,6 @@ public class StartingFrame extends javax.swing.JFrame {
               }
             }
             fileInput.close();
-            
         }catch(IOException e){
             System.out.println(e);
         }

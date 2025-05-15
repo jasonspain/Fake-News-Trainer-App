@@ -18,4 +18,8 @@ public class Question {
         this.Question=Question;
         this.fileAns=fileAns;
     }
+   
+    public String toString(){
+        return img+Question+fileAns;
+    }
 }
