@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import javax.swing.ImageIcon;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -8,12 +10,18 @@
  * @author 342964137
  */
 public class QuestionFrame extends javax.swing.JFrame {
-
+    public static int count = 0;
+    
+    
     /**
      * Creates new form QuestionFrame
      */
     public QuestionFrame() {
         initComponents();
+        jLabel1.setText(Question.q.get(count).getQuestion());
+        //ImageIcon icon = new ImageIcon(getClass().getResource(Question.q.get(count).getImg()));
+        //jLabel2.setIcon(icon);
+        count++;
     }
 
     /**

@@ -12,27 +12,14 @@ import java.util.Scanner;
  * @author 342964137
  */
 public class StartingFrame extends javax.swing.JFrame {
-    ArrayList<Question> q = new ArrayList<Question>();
+    
+    
     /**
      * Creates new form StartingFrame
      */
     public StartingFrame() {
         initComponents();
-        try{
-            Scanner fileInput = new Scanner(new File("Questions.txt"));
-            while(fileInput.hasNextLine()){
-              String [] info = fileInput.nextLine().split(",");
-              if(info.length>3){
-                  q.add(new MultipleChoice(info[0],info[1],Integer.parseInt(info[2]),info[3],info[4],info[5],info[6]));
-              }else{
-                  q.add(new Real_Fake(info[0],info[1],Integer.parseInt(info[2])));
-              }
-            }
-            fileInput.close();
-        }catch(IOException e){
-            System.out.println(e);
-        }
-        
+        Question.writeQuestion();
     }
 
     /**
