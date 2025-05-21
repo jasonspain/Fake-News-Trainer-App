@@ -1,3 +1,6 @@
+
+import java.util.ArrayList;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -8,5 +11,5 @@
  * @author 342964137
  */
 public class AllAns {
-    
+    public static ArrayList<UserAns> a = new ArrayList<UserAns>();
 }

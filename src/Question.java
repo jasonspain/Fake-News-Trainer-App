@@ -12,10 +12,10 @@ import java.util.Scanner;
  * @author 342964137
  */
 public class Question {
-    public static ArrayList<Question> q = new ArrayList<Question>();
     private String img;
     private String Question;
     private int fileAns;
+    public static ArrayList<Question> q = new ArrayList<Question>();
     
     public Question(String img,String Question, int fileAns){
         this.img=img;
@@ -35,7 +35,7 @@ public class Question {
         return fileAns;
     }
     
-    public static void writeQuestion(){
+    public static void writeToQuestion(){
         try{
             Scanner fileInput = new Scanner(new File("Questions.txt"));
             while(fileInput.hasNextLine()){

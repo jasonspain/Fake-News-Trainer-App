@@ -19,7 +19,7 @@ public class StartingFrame extends javax.swing.JFrame {
      */
     public StartingFrame() {
         initComponents();
-        Question.writeQuestion();
+        Question.writeToQuestion();
     }
 
     /**
