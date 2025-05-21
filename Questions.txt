@@ -1,3 +1,10 @@
-img1,question1,1
-img2,question2,4,choice1,choice2,choice3,choice4
-img3,question3,2
+img1,Is this article Real or Fake?,2
+img2,Is this article Real or Fake?,2
+img3,Why is this article fake?,4,Under the entertainment section,Photo credit not fully printed out(in a link),Photo is edited with no proof or this happening,All options are correct
+img4,Is this article Real or Fake?,2
+img5,What is wrong with this passage from a article from the news source The Guardian,2,Not from a trustworthy source,Use of emotional language,written by a unknown author,written a long time ago
+img6,Is this article Real or Fake?,2
+img7,What is wrong with this article?,4,No image credits,Event does not seem Real,No author,All the options are correct
+img8,Is this article Real or Fake?,2
+img9,What is wrong with this article?,3,Too many authors,Has video instead if image,Nothing is wrong with this article,Has links to social media
+img10,Is this article Real or Fake?,1
