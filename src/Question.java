@@ -52,6 +52,15 @@ public class Question {
         }
         
     }
+    
+    public static void nextQuestion(){
+        int currentAns = AllAns.a.get(AllAns.a.size() - 1).getQuestionNum();
+        if(q.get(currentAns+1) instanceof Real_Fake){
+            new QuestionFrame().setVisible(true);
+        }else{
+            new Question2Frame().setVisible(true);
+        }
+    }
             
     @Override
     public String toString(){
