@@ -16,6 +16,7 @@ public class Question {
     private String Question;
     private int fileAns;
     public static ArrayList<Question> q = new ArrayList<Question>();
+    public static int count = 0;
     
     public Question(String img,String Question, int fileAns){
         this.img=img;

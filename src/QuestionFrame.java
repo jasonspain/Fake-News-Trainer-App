@@ -10,7 +10,6 @@ import javax.swing.ImageIcon;
  * @author 342964137
  */
 public class QuestionFrame extends javax.swing.JFrame {
-    public static int count = 0;
     
     
     /**
@@ -18,10 +17,10 @@ public class QuestionFrame extends javax.swing.JFrame {
      */
     public QuestionFrame() {
         initComponents();
-        jLabel1.setText(Question.q.get(count).getQuestion());
-        //ImageIcon icon = new ImageIcon(getClass().getResource(Question.q.get(count).getImg()));
-        //jLabel2.setIcon(icon);
-        count++;
+        jLabel1.setText(Question.q.get(Question.count).getQuestion());
+        ImageIcon icon = new ImageIcon(getClass().getResource(Question.q.get(Question.count).getImg()));
+        jLabel2.setIcon(icon);
+        Question.count++;
     }
 
     /**
@@ -89,7 +88,7 @@ public class QuestionFrame extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
