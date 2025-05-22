@@ -14,7 +14,7 @@ public class UserAns {
     private String questionType;
     private int questionNum;
     private boolean correct;
-    private static int count;
+    private static int count=1;
     
     public UserAns(int ans,String questionType, boolean correct){
         this.ans=ans;
@@ -37,5 +37,8 @@ public class UserAns {
         } else{
            AllAns.a.add(new UserAns(answer,qType,false));
         }
+    }
+    public String toString(){
+        return ans+questionType+questionNum+correct;
     }
 }
