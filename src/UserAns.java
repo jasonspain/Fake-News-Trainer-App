@@ -15,6 +15,9 @@ public class UserAns {
     private int questionNum;
     private boolean correct;
     private static int count;
+    private static final String tf = "RealorFake";
+    private static final String mc = "MultipleChoice";
+
     
     public UserAns(int ans,String questionType, boolean correct){
         this.ans=ans;
@@ -28,9 +31,9 @@ public class UserAns {
     public static void MakeAns(int answer){
         String qType;
         if(Question.q.get(count) instanceof Real_Fake)
-            qType = "RealorFake";
+            qType = tf;
         else{
-            qType="MultipleChoice";  
+            qType=mc;  
         }
         if(answer == Question.q.get(count).getFileAns()){
            AllAns.a.add(new UserAns(answer,qType,true));   

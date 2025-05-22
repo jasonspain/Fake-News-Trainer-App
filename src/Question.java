@@ -18,6 +18,12 @@ public class Question {
     public static ArrayList<Question> q = new ArrayList<Question>();
     public static int count = 0;
     
+    public Question(){
+        this.img="n/a";
+        this.Question="n/a";
+        this.fileAns=-1;  
+    }
+    
     public Question(String img,String Question, int fileAns){
         this.img=img;
         this.Question=Question;
