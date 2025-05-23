@@ -45,7 +45,11 @@ public class UserAns {
     public int getQuestionNum(){
         return questionNum;
     }
+    public boolean getCorrect(){
+        return correct;
+    }
     
+    @Override
     public String toString(){
         return ans+questionType+questionNum+correct;
     }

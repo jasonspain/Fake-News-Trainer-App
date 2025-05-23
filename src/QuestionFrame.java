@@ -104,6 +104,7 @@ public class QuestionFrame extends javax.swing.JFrame {
         UserAns.MakeAns(1);
         Question.nextQuestion();
         this.setVisible(false);
+            
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
