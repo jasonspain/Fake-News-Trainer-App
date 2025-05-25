@@ -48,7 +48,10 @@ public class UserAns {
     public boolean getCorrect(){
         return correct;
     }
-    
+    public int getAns() {
+        return ans;
+    }
+
     @Override
     public String toString(){
         return ans+questionType+questionNum+correct;

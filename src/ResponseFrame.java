@@ -2,19 +2,105 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.File;
+import java.util.Scanner;
+
 
 /**
  *
  * @author 342964137
  */
 public class ResponseFrame extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form ResponseFrame
      */
     public ResponseFrame() {
         initComponents();
+        displayResults();
     }
+    
+    private void displayResults(){
+        int longestStreak = 0;
+        int currStreak = 0;
+        
+        for(int i = 0; i < AllAns.a.size(); i++){
+            UserAns answer = AllAns.a.get(i);
+            if(answer.getCorrect()){
+                currStreak++;
+                if (currStreak > longestStreak){
+                longestStreak = currStreak;
+                }
+            } else{
+                currStreak = 0;
+            }
+        }
+        jStreakLabel.setText(String.valueOf(longestStreak));
+        
+        StringBuilder wrongAnswers = new StringBuilder();
+        for (int i = 0; i < AllAns.a.size(); i++) {
+            UserAns answer = AllAns.a.get(i);
+            if (!answer.getCorrect()) {
+                Question question = Question.q.get(i);
+                wrongAnswers.append("Question ").append(i + 1).append(": ")
+                        .append(question.getQuestion()).append("\n")
+                        .append("Your answer: ").append(answer.getAns()).append("\n")
+                        .append("Correct answer: ").append(question.getFileAns()).append("\n\n");
+            }
+        }
+
+        if (wrongAnswers.length() == 0) {
+            WrongAnswersTextArea.setText("no wrong answers");
+        } else {
+            WrongAnswersTextArea.setText(wrongAnswers.toString());
+        }try (FileWriter w = new FileWriter("UserAnswers.txt", false)) {
+        w.write("");
+    } catch (IOException e) {
+    }
+    
+    for(int i = 0; i < AllAns.a.size(); i++){
+        UserAns answer = AllAns.a.get(i);
+        if(answer.getCorrect()){
+            currStreak++;
+            if (currStreak > longestStreak){
+                longestStreak = currStreak;
+            }
+        } else {
+            currStreak = 0;
+            try (FileWriter w = new FileWriter("UserAnswers.txt", true)) {
+                Question question = Question.q.get(i);
+                w.append("Question ").append(String.valueOf(i + 1)).append(": ")
+                  .append(question.getQuestion()).append("\n")
+                  .append("Your answer: ").append(String.valueOf(answer.getAns())).append("\n")
+                  .append("Correct answer: ").append(String.valueOf(question.getFileAns())).append("\n\n");
+            } catch (IOException e) {
+            }
+        }
+    }
+    
+    jStreakLabel.setText(String.valueOf(longestStreak));
+
+        try {
+        Scanner s = new Scanner(new File("UserAnswers.txt"));
+        
+        StringBuilder content = new StringBuilder();
+        while (s.hasNextLine()) {
+            content.append(s.nextLine()).append("\n");
+        }
+        s.close();
+        
+        if (content.length() == 0) {
+            WrongAnswersTextArea.setText("No wrong answers");
+        } else {
+            WrongAnswersTextArea.setText(content.toString());
+        }
+    } catch (IOException e) {
+    }
+
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,8 +113,8 @@ public class ResponseFrame extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jStreakLabel = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        WrongAnswersTextArea = new java.awt.TextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -39,13 +125,6 @@ public class ResponseFrame extends javax.swing.JFrame {
         jStreakLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jStreakLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jStreakLabel.setText("0");
-
-        jTextField1.setText("jTextField1");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
 
         jLabel2.setText("Wrong Answers");
 
@@ -61,9 +140,9 @@ public class ResponseFrame extends javax.swing.JFrame {
                 .addGap(138, 138, 138))
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(WrongAnswersTextArea, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -76,16 +155,12 @@ public class ResponseFrame extends javax.swing.JFrame {
                 .addGap(53, 53, 53)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addComponent(WrongAnswersTextArea, javax.swing.GroupLayout.PREFERRED_SIZE, 406, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -123,9 +198,9 @@ public class ResponseFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private java.awt.TextArea WrongAnswersTextArea;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jStreakLabel;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }
