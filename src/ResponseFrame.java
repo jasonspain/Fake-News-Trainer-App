@@ -2,10 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.File;
-import java.util.Scanner;
+
 
 
 /**
@@ -23,81 +20,16 @@ public class ResponseFrame extends javax.swing.JFrame {
     }
     
     private void displayResults(){
-        int longestStreak = 0;
-        int currStreak = 0;
-        
-        for(int i = 0; i < AllAns.a.size(); i++){
-            UserAns answer = AllAns.a.get(i);
-            if(answer.getCorrect()){
-                currStreak++;
-                if (currStreak > longestStreak){
-                longestStreak = currStreak;
-                }
-            } else{
-                currStreak = 0;
-            }
-        }
-        jStreakLabel.setText(String.valueOf(longestStreak));
-        
-        StringBuilder wrongAnswers = new StringBuilder();
-        for (int i = 0; i < AllAns.a.size(); i++) {
-            UserAns answer = AllAns.a.get(i);
-            if (!answer.getCorrect()) {
-                Question question = Question.q.get(i);
-                wrongAnswers.append("Question ").append(i + 1).append(": ")
-                        .append(question.getQuestion()).append("\n")
-                        .append("Your answer: ").append(answer.getAns()).append("\n")
-                        .append("Correct answer: ").append(question.getFileAns()).append("\n\n");
-            }
-        }
 
-        if (wrongAnswers.length() == 0) {
+        jStreakLabel.setText(String.valueOf(AllAns.setStreak()));
+        
+        if (AllAns.displayWrongAns().length() == 0) {
             WrongAnswersTextArea.setText("no wrong answers");
         } else {
-            WrongAnswersTextArea.setText(wrongAnswers.toString());
-        }try (FileWriter w = new FileWriter("UserAnswers.txt", false)) {
-        w.write("");
-    } catch (IOException e) {
-    }
-    
-    for(int i = 0; i < AllAns.a.size(); i++){
-        UserAns answer = AllAns.a.get(i);
-        if(answer.getCorrect()){
-            currStreak++;
-            if (currStreak > longestStreak){
-                longestStreak = currStreak;
-            }
-        } else {
-            currStreak = 0;
-            try (FileWriter w = new FileWriter("UserAnswers.txt", true)) {
-                Question question = Question.q.get(i);
-                w.append("Question ").append(String.valueOf(i + 1)).append(": ")
-                  .append(question.getQuestion()).append("\n")
-                  .append("Your answer: ").append(String.valueOf(answer.getAns())).append("\n")
-                  .append("Correct answer: ").append(String.valueOf(question.getFileAns())).append("\n\n");
-            } catch (IOException e) {
-            }
+            WrongAnswersTextArea.setText(AllAns.displayWrongAns());
         }
-    }
-    
-    jStreakLabel.setText(String.valueOf(longestStreak));
 
-        try {
-        Scanner s = new Scanner(new File("UserAnswers.txt"));
-        
-        StringBuilder content = new StringBuilder();
-        while (s.hasNextLine()) {
-            content.append(s.nextLine()).append("\n");
-        }
-        s.close();
-        
-        if (content.length() == 0) {
-            WrongAnswersTextArea.setText("No wrong answers");
-        } else {
-            WrongAnswersTextArea.setText(content.toString());
-        }
-    } catch (IOException e) {
-    }
+        AllAns.WriteWrongAnstoFile();
 
     }
 
