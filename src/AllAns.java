@@ -12,12 +12,22 @@ import java.util.ArrayList;
  *
  * @author 342964137
  */
+/**
+ * Manages user answers, tracks streaks and
+ * stores/displays the incorrect answers.
+ */
 public class AllAns {
     private static int longestStreak = 0;
     private static int currStreak = 0;
     
+    // Stores all user answers
     public static ArrayList<UserAns> a = new ArrayList<UserAns>();
     
+    /**
+     * If statement that calculates and returns the longest streak of correct answers. resets
+     * current streak on incorrect answers.
+     * @return Longest streak of correct answers
+     */
     public static int setStreak(){
         for(int i = 0; i < AllAns.a.size(); i++){
         UserAns answer = AllAns.a.get(i);
@@ -27,12 +37,16 @@ public class AllAns {
             longestStreak = currStreak;
             }
         } else{
-            currStreak = 0;
+            currStreak = 0; // resets streak
         }
     }
     return longestStreak;
     }
     
+    /**
+     * Generates a string of all incorrect answers formatted 
+     * @return Formatted string of wrong answers
+     */
     public static String displayWrongAns(){
         StringBuilder wrongAnswers = new StringBuilder();
         for (int i = 0; i < AllAns.a.size(); i++) {
@@ -48,7 +62,12 @@ public class AllAns {
         return wrongAnswers.toString();
     }
     
+    /**
+     * Writes incorrect answers to UserAnswers.txt file. 
+     * also updates streaks.
+     */
     public static void WriteWrongAnstoFile(){
+        // Clear the file
         try {
             FileWriter w = new FileWriter("UserAnswers.txt", false);
             w.write("");
@@ -63,7 +82,8 @@ public class AllAns {
                 longestStreak = currStreak;
             }
         } else {
-            currStreak = 0;
+            currStreak = 0; //resets streak
+            // write wrong answer details to file
             try {
                 FileWriter w = new FileWriter("UserAnswers.txt", true);
                 Question question = Question.q.get(i);

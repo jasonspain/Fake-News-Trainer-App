@@ -17,16 +17,20 @@ public class Question2Frame extends javax.swing.JFrame {
      */
     public Question2Frame() {
         initComponents();
+        // Sets question text from current question
         jLabel1.setText(Question.q.get(Question.count).getQuestion());
+        // Load/display question image
         ImageIcon icon = new ImageIcon(getClass().getResource(Question.q.get(Question.count).getImg()));
         jLabel2.setIcon(icon);
+        // Cast to MultipleChoice class to get answer choices
         MultipleChoice Choice = (MultipleChoice) Question.q.get(Question.count);
+        // set buttons texts from answer choices
         jButton1.setText(Choice.getChoice1());
         jButton2.setText(Choice.getChoice2());
         jButton3.setText(Choice.getChoice3());
         jButton4.setText(Choice.getChoice4());
                 
-        Question.count++;    
+        Question.count++; //increasese question count for tracking
     }
 
     /**
@@ -133,30 +137,30 @@ public class Question2Frame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        UserAns.MakeAns(1);
-        Question.nextQuestion();
-        this.setVisible(false);
+        UserAns.MakeAns(1); // records answer choice to 1
+        Question.nextQuestion(); // loads next question
+        this.setVisible(false); // hides this question frame
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        UserAns.MakeAns(2);
-        Question.nextQuestion();
-        this.setVisible(false);
+        UserAns.MakeAns(2); // records answer choice to 2
+        Question.nextQuestion(); // loads next question
+        this.setVisible(false); // hides this question frame
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        UserAns.MakeAns(3);
-        Question.nextQuestion();
-        this.setVisible(false);
+        UserAns.MakeAns(3); // records answer choice to 3
+        Question.nextQuestion(); // loads next question
+        this.setVisible(false); // hides this question frame
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        UserAns.MakeAns(4);
-        Question.nextQuestion();
-        this.setVisible(false);
+        UserAns.MakeAns(4); // records answer choice to 4
+        Question.nextQuestion(); // loads next question
+        this.setVisible(false); // hides this question frame
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**

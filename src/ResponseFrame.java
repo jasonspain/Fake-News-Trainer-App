@@ -18,14 +18,20 @@ public class ResponseFrame extends javax.swing.JFrame {
         initComponents();
         displayResults();
     }
-    
+    /**
+     * Displays the quiz results in the frame components. Shows the current
+     * streak count and any wrong answers. If there are no wrong answers
+     * displays a message. Also writes the wrong answers to a UserAns.txt.
+     */
     private void displayResults(){
 
         jStreakLabel.setText(String.valueOf(AllAns.setStreak()));
-        
+        // Check if there are any wrong answers to display
         if (AllAns.displayWrongAns().length() == 0) {
+            // No wrong answers
             WrongAnswersTextArea.setText("no wrong answers");
         } else {
+            // Display all wrong answers in the text area
             WrongAnswersTextArea.setText(AllAns.displayWrongAns());
         }
 
