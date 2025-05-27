@@ -15,8 +15,8 @@ public class UserAns {
     private int questionNum;
     private boolean correct;
     private static int count;
-    private static final String tf = "RealorFake";
-    private static final String mc = "MultipleChoice";
+    private static final String TF = "RealorFake";
+    private static final String MC = "MultipleChoice";
 
     /**
      * Main constructor that constructs a UserAns record
@@ -43,9 +43,9 @@ public class UserAns {
         String qType;
         // find question type using instanceof
         if(Question.q.get(count) instanceof Real_Fake)
-            qType = tf;
+            qType = TF;
         else{
-            qType=mc;  
+            qType=MC;  
         }
         // Checks answer with a stored answer
         if(answer == Question.q.get(count).getFileAns()){
@@ -70,7 +70,6 @@ public class UserAns {
      * string representation of answer data
      * @return string of answer fields
      */
-    @Override
     public String toString(){
         return ans+questionType+questionNum+correct;
     }
